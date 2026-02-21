@@ -34,26 +34,61 @@ function setHtmlLang(lang) {
 }
 
 function populateSelector(current, translations) {
-  const sel = document.getElementById('lang-select');
-  if (!sel) return;
-  sel.innerHTML = '';
+  const container = document.getElementById('lang-select');
+  if (!container) return;
+  const toggle = container.querySelector('.lang-toggle');
+  const list = container.querySelector('.lang-options');
+
   const opts = {
-    en: 'English',
-    de: 'Deutsch'
+    en: { label: 'English', img: '/assets/img/flags/gb.svg' },
+    de: { label: 'Deutsch', img: '/assets/img/flags/de.svg' }
   };
-  SUPPORTED.forEach(code => {
-    const o = document.createElement('option');
-    o.value = code;
-    o.textContent = opts[code] || code;
-    if (code === current) o.selected = true;
-    sel.appendChild(o);
+
+  list.innerHTML = '';
+  Object.keys(opts).forEach(code => {
+    const li = document.createElement('li');
+    li.setAttribute('role', 'option');
+    li.dataset.lang = code;
+    const img = document.createElement('img');
+    img.src = opts[code].img;
+    img.className = 'flag';
+    img.alt = '';
+    const span = document.createElement('span');
+    span.textContent = opts[code].label;
+    li.appendChild(img);
+    li.appendChild(span);
+    li.addEventListener('click', async () => {
+      localStorage.setItem('site-lang', code);
+      const tr = await loadTranslations(code);
+      setHtmlLang(code);
+      applyTranslations(tr);
+      // update toggle display
+      toggle.querySelector('.flag').src = opts[code].img;
+      toggle.querySelector('.lang-label').textContent = opts[code].label;
+      list.hidden = true;
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+    list.appendChild(li);
   });
-  sel.addEventListener('change', async (e) => {
-    const lang = e.target.value;
-    localStorage.setItem('site-lang', lang);
-    const tr = await loadTranslations(lang);
-    setHtmlLang(lang);
-    applyTranslations(tr);
+
+  // initialize toggle label/img
+  if (opts[current]) {
+    toggle.querySelector('.flag').src = opts[current].img;
+    toggle.querySelector('.lang-label').textContent = opts[current].label;
+  }
+
+  toggle.addEventListener('click', () => {
+    const open = list.hidden;
+    list.hidden = !open;
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+
+  // close when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!container.contains(e.target)) {
+      list.hidden = true;
+      toggle.setAttribute('aria-expanded', 'false');
+    }
   });
 }
 

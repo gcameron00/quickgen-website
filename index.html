@@ -9,8 +9,13 @@
   </head>
   <body>
     <div class="topbar">
-      <label for="lang-select" class="visually-hidden">Language</label>
-      <select id="lang-select" aria-label="Language selector"></select>
+      <div id="lang-select" class="lang-dropdown" role="group" aria-label="Language selector">
+        <button class="lang-toggle" aria-haspopup="listbox" aria-expanded="false">
+          <img src="/assets/img/flags/gb.svg" alt="" class="flag" />
+          <span class="lang-label">English</span>
+        </button>
+        <ul class="lang-options" role="listbox" hidden></ul>
+      </div>
     </div>
 
     <h1 data-i18n="heading">It works 🎉</h1>
