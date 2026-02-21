@@ -3,11 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>About</title>
+    <title data-i18n="title">About</title>
     <link rel="stylesheet" href="/assets/css/styles.css">
+    <script defer src="/assets/js/main.js"></script>
   </head>
   <body>
-    <h1>About</h1>
-    <p><a href="/">Back home</a></p>
+    <div class="topbar">
+      <label for="lang-select" class="visually-hidden">Language</label>
+      <select id="lang-select" aria-label="Language selector"></select>
+    </div>
+
+    <h1 data-i18n="heading">About</h1>
+    <p><a data-i18n="home_link" href="/">Back home</a></p>
   </body>
 </html>

@@ -1,2 +1,6 @@
 body { font-family: system-ui, sans-serif; margin: 2rem; }
 a { text-decoration: none; }
+
+.topbar { display:flex; justify-content:flex-end; margin-bottom:1rem; }
+#lang-select { padding:0.25rem 0.5rem; font-size:1rem; }
+.visually-hidden { position: absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }

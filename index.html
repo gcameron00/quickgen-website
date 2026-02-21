@@ -3,13 +3,18 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Home</title>
+    <title data-i18n="title">Home</title>
     <link rel="stylesheet" href="/assets/css/styles.css">
     <script defer src="/assets/js/main.js"></script>
   </head>
   <body>
-    <h1>It works 🎉</h1>
-    <p>This site is deployed using Cloudflare Pages.</p>
-    <p><a href="/about/">About</a></p>
+    <div class="topbar">
+      <label for="lang-select" class="visually-hidden">Language</label>
+      <select id="lang-select" aria-label="Language selector"></select>
+    </div>
+
+    <h1 data-i18n="heading">It works 🎉</h1>
+    <p data-i18n="blurb">This site is deployed using Cloudflare Pages.</p>
+    <p><a data-i18n="about_link" href="/about/">About</a></p>
   </body>
 </html>
