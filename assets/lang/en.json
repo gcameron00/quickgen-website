@@ -4,5 +4,8 @@
   "blurb": "This site is deployed using Cloudflare Pages.",
   "about_link": "About",
   "home_link": "Back home",
-  "lang_name": "English"
+  "lang_name": "English",
+  "not_found_title": "404 – Page not found",
+  "not_found_heading": "404",
+  "not_found_blurb": "This page doesn't exist."
 }

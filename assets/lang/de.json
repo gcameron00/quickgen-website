@@ -4,5 +4,8 @@
   "blurb": "Diese Website wird mit Cloudflare Pages bereitgestellt.",
   "about_link": "Über",
   "home_link": "Zurück zur Startseite",
-  "lang_name": "Deutsch"
+  "lang_name": "Deutsch",
+  "not_found_title": "404 – Seite nicht gefunden",
+  "not_found_heading": "404",
+  "not_found_blurb": "Diese Seite existiert nicht."
 }
